@@ -32,11 +32,11 @@ SRResolvable class >> identifier: aStringIdentifier node: aPSQLASTIdentifier [
 ]
 
 { #category : #'instance creation' }
-SRResolvable class >> identifier: aStringIdentifier node: aPSQLASTIdentifier next: aNextPSQIdentifierWithNode [
+SRResolvable class >> identifier: aString node: anIdentifier next: aNextIdentifierWithNode [
 	^ self new
-		identifier: aStringIdentifier;
-		node: aPSQLASTIdentifier;
-		next: aNextPSQIdentifierWithNode;
+		identifier: aString;
+		node: anIdentifier;
+		next: aNextIdentifierWithNode;
 		yourself
 ]
 

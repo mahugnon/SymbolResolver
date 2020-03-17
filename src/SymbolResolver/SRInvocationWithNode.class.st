@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-SRInvocationWithNode class >> identifier: anIdentifier node: aNode expectedKind: aKind arguments: aCollectionOfArguments [
+SRInvocationWithNode class >> identifier: anIdentifier expectedKind: aKind node: aNode arguments: aCollectionOfArguments [
 	^ (self identifier: anIdentifier node: aNode)
 		expectedKind: aKind;
 		arguments: aCollectionOfArguments;
