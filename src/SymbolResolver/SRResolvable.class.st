@@ -10,7 +10,8 @@ Class {
 		'next',
 		'expectedKind',
 		'foundAction',
-		'notFoundReplacementEntity'
+		'notFoundReplacementEntity',
+		'isCaseSensitive'
 	],
 	#category : #'SymbolResolver-Core'
 }
@@ -93,9 +94,32 @@ SRResolvable >> identifier: anObject [
 	identifier := anObject
 ]
 
+{ #category : #resolution }
+SRResolvable >> initialize [
+	super initialize.
+	isCaseSensitive := true
+]
+
+{ #category : #accessing }
+SRResolvable >> isCaseSensitive [
+	^ isCaseSensitive
+]
+
+{ #category : #accessing }
+SRResolvable >> isCaseSensitive: aBoolean [
+	isCaseSensitive := aBoolean
+]
+
 { #category : #testing }
 SRResolvable >> isLast [
 	^ self next isNil
+]
+
+{ #category : #resolution }
+SRResolvable >> name: aString isSameAs: anotherString [
+	^ self isCaseSensitive
+		ifTrue: [ aString = anotherString ]
+		ifFalse: [ aString asLowercase = anotherString asLowercase ]
 ]
 
 { #category : #accessing }

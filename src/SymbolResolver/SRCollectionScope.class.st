@@ -23,6 +23,6 @@ SRCollectionScope >> reachableEntitiesOwned [
 ]
 
 { #category : #accessing }
-SRCollectionScope >> reachableEntitiesOwned: anObject [
-	reachableEntitiesOwned := anObject
+SRCollectionScope >> reachableEntitiesOwned: aCollection [
+	reachableEntitiesOwned := aCollection 
 ]

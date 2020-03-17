@@ -34,7 +34,7 @@ SRIdentifierWithNode >> resolveInScope: aScope currentEntity: currentEntity [
 		entity:
 			(aScope
 				detect: [ :anEntity | 
-					anEntity name = self identifier
+					(self name: anEntity name isSameAs: self identifier)
 						and: [ self checkKindOfEntity: anEntity ] ]).
 	self triggerFoundActionWithCurrentEntity: currentEntity.
 	self isLast

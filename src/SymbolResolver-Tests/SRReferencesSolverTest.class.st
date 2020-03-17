@@ -45,11 +45,6 @@ SRReferencesSolverTest >> testCurrentEntity [
 ]
 
 { #category : #tests }
-SRReferencesSolverTest >> testDefineAliasInCurrentScopeFor [
-	self fail
-]
-
-{ #category : #tests }
 SRReferencesSolverTest >> testEnsureScopesAreCopied [
 	| firstScope scopesFirstState secondScope scopesSecondState |
 	firstScope := SREntityScope new.
@@ -132,19 +127,4 @@ SRReferencesSolverTest >> testRemoveScope [
 	self assert: referencesSolver scopes size equals: scopesCount + 2.
 	self assert: referencesSolver scopes first equals: scope3.
 	self assert: referencesSolver scopes allButFirst first equals: scope1
-]
-
-{ #category : #tests }
-SRReferencesSolverTest >> testResolve [
-	self fail
-]
-
-{ #category : #tests }
-SRReferencesSolverTest >> testResolveInScope [
-	self fail
-]
-
-{ #category : #tests }
-SRReferencesSolverTest >> testTopScopeReachableEntities [
-	self fail
 ]
