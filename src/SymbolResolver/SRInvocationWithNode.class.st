@@ -64,7 +64,7 @@ SRInvocationWithNode >> resolveInScope: aScope currentEntity: currentEntity [
 		ifFalse: [ NotFound signal ].
 	^ (aScope
 		select: [ :anEntity | 
-			anEntity name = self identifier
+			(self name: anEntity name isSameAs: self identifier)
 				and: [ self checkKindOfEntity: anEntity ] ])
 		ifEmpty: [ NotFound signal ]
 		ifNotEmpty: [ :entities | 
