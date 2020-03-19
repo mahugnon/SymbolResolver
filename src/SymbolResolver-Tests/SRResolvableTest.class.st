@@ -12,13 +12,13 @@ Class {
 
 { #category : #running }
 SRResolvableTest >> setUp [
-	variable1 := FamixPWBVariable new
+	variable1 := FamixTest2Class  new
 		name: 'aVariable1';
 		yourself.
-	variable2 := FamixPWBVariable new
+	variable2 := FamixTest2Class new
 		name: 'aVariable2';
 		yourself.
-	variable3 := FamixPWBVariable new
+	variable3 := FamixTest2Class new
 		name: 'aVariable3';
 		yourself.
 	scope := SRCollectionScope new.
