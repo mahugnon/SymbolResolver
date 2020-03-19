@@ -11,7 +11,7 @@ BaselineOfSymbolResolver >> baseline: spec [
 		for: #common
 		do: [ spec
 				package: 'SymbolResolver';
-				package: 'SRResolvableTest'
+				package: 'SymbolResolver-Tests'
 					with: [ spec requires: #('SymbolResolver') ] ].
 	spec
 		for: #WithoutMoose
