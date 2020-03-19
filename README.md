@@ -10,3 +10,4 @@ Metacello new
   onWarningLog;
   load.
 ```
+[![Build Status](https://travis-ci.org/moosetechnology/SymbolResolver.svg?branch=master)](https://travis-ci.org/moosetechnology/SymbolResolver)
