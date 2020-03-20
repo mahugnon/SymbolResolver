@@ -5,7 +5,8 @@ Class {
 	#name : #SRReferencesSolver,
 	#superclass : #Object,
 	#instVars : [
-		'scopes'
+		'scopes',
+		'isCaseSensitive'
 	],
 	#category : #'SymbolResolver-Solver'
 }
@@ -41,7 +42,18 @@ SRReferencesSolver >> detect: aBlock [
 { #category : #initialization }
 SRReferencesSolver >> initialize [
 	super initialize.
-	self scopes: Stack new
+	self scopes: Stack new.
+	isCaseSensitive := true
+]
+
+{ #category : #accessing }
+SRReferencesSolver >> isCaseSensitive [
+	^ isCaseSensitive
+]
+
+{ #category : #accessing }
+SRReferencesSolver >> isCaseSensitive: anObject [
+	isCaseSensitive := anObject
 ]
 
 { #category : #accessing }
@@ -98,6 +110,13 @@ SRReferencesSolver >> reachableEntitiesFor: aScope detect: aBlockClosure ifFound
 { #category : #removing }
 SRReferencesSolver >> removeScope: aPSQLScope [
 	self copyScopes remove: aPSQLScope
+]
+
+{ #category : #factory }
+SRReferencesSolver >> resolvable: aResolvable [
+	^aResolvable
+		isCaseSensitive: self isCaseSensitive  ;
+		yourself
 ]
 
 { #category : #resolution }

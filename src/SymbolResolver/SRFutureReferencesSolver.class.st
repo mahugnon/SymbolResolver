@@ -1,5 +1,5 @@
 "
-I am a reference solver that does not directly resolve stuff but store all the resolution it will have to do and then resolve everything when #resolveStoredCases is called
+I am a reference solver that does not directly resolve stuff but store all the resolution it will have to do and then resolve everything when #resolveUnresolvedReferences is called
 "
 Class {
 	#name : #SRFutureReferencesSolver,

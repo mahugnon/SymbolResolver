@@ -81,7 +81,8 @@ SRSolverUserVisitor >> errorReport: anObject [
 
 { #category : #initialization }
 SRSolverUserVisitor >> initialiseFutureSolver [
-	solver := SRFutureReferencesSolver new
+	solver := SRFutureReferencesSolver new.
+	solver isCaseSensitive: false
 ]
 
 { #category : #initialization }
@@ -107,6 +108,11 @@ SRSolverUserVisitor >> pushEntitiesAsScope: aCollectionOfEntities [
 { #category : #scope }
 SRSolverUserVisitor >> pushEntityAsScope: anEntity [
 	self solver pushEntityAsScope: anEntity
+]
+
+{ #category : #factory }
+SRSolverUserVisitor >> resolvable: aResolvable [
+	^ self solver resolvable: aResolvable
 ]
 
 { #category : #resolution }
