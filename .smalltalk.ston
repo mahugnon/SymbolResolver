@@ -1,7 +1,8 @@
 SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
-      #baseline : 'SymbolResolver'
+      #baseline : 'SymbolResolver',
+       #directory : 'src'
     }
   ]
 }
