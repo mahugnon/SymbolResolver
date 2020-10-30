@@ -45,6 +45,16 @@ SRResolvable >> applyReplacementStrategyWithCurrentEntity: aCurrentEntity [
 	self subclassResponsibility 
 ]
 
+{ #category : #accessing }
+SRResolvable >> arrayWithSize [
+	^ arrayWithSize
+]
+
+{ #category : #accessing }
+SRResolvable >> arrayWithSize: anObject [
+	arrayWithSize := anObject
+]
+
 { #category : #resolution }
 SRResolvable >> checkKindOfEntity: anEntity [
 	self expectedKind ifNil: [ ^ true ].
