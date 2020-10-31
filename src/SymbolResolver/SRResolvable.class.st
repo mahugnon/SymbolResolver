@@ -11,7 +11,8 @@ Class {
 		'expectedKind',
 		'foundAction',
 		'notFoundReplacementEntity',
-		'isCaseSensitive'
+		'isCaseSensitive',
+		'arrayWithSize'
 	],
 	#category : #'SymbolResolver-Core'
 }
