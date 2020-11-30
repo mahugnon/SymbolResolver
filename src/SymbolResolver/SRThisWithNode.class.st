@@ -31,6 +31,11 @@ SRThisWithNode >> entity: anObject [
 	entity := anObject
 ]
 
+{ #category : #printing }
+SRThisWithNode >> printIdentifierPath: aStream [
+	aStream nextPutAll: 'this'
+]
+
 { #category : #resolution }
 SRThisWithNode >> resolveInScope: aSRScope currentEntity: currentEntity [
 	(aSRScope isEntityScope and: [ self validateAsType: aSRScope entity ])

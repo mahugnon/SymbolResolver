@@ -38,16 +38,27 @@ SRReferenceToResolve >> identifiers: anObject [
 ]
 
 { #category : #resolution }
+SRReferenceToResolve >> replacementForUnresolvedIdentifier [
+	identifiers hasReplacementStrategy
+		ifTrue: [ identifiers
+				applyReplacementStrategyWithCurrentEntity: self currentEntity.
+			^ identifiers
+				triggerFoundActionWithCurrentEntity: self currentEntity ]
+		ifFalse: [ SRReferencesNotFound signalIdentifiers: identifiers ]
+]
+
+{ #category : #resolution }
 SRReferenceToResolve >> resolve [
+	"self decomposeIdentifier."
 	self scopes
 		do: [ :aScope | 
-			[ ^ self resolve: self identifiers inScope: aScope ]
+			[ ^ self resolve: identifiers inScope: aScope ]
 				on: NotFound
 				do: [ "do nothing to try superior scope" ] ].
-	identifiers hasReplacementStrategy
-		ifTrue: [ identifiers applyReplacementStrategyWithCurrentEntity: self currentEntity.
-			^ identifiers triggerFoundActionWithCurrentEntity: self currentEntity ]
-		ifFalse: [ SRReferencesNotFound signalIdentifiers: identifiers ]
+	^self replacementForUnresolvedIdentifier
+ 
+
+
 ]
 
 { #category : #accessing }

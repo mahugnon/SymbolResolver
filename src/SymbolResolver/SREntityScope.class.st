@@ -13,16 +13,14 @@ Class {
 
 { #category : #accessing }
 SREntityScope class >> currentEntity: anEntity [
-	^ self new
-		entity: anEntity;
+	^ (self entity: anEntity)
 		isCurrentEntity: true;
 		yourself
 ]
 
 { #category : #accessing }
 SREntityScope class >> entity: anEntity [
-	^ self new
-		entity: anEntity;
+	^ (anEntity asSREntityScope)
 		isCurrentEntity: false;
 		yourself
 ]
