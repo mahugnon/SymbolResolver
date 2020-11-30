@@ -55,22 +55,34 @@ SRInvocationWithNode >> entity [
 
 { #category : #resolution }
 SRInvocationWithNode >> resolveInScope: aScope currentEntity: currentEntity [
-	(currentEntity isNullPatternObject) ifTrue: [ ^ self ].
-	(self expectedKind isCollection
+	currentEntity isNullPatternObject
+		ifTrue: [ ^ currentEntity ].
+	(self scopeCanContainExpectedKind: aScope)
+		ifFalse: [ NotFound signal ].
+	(self scopeContainsEntity: aScope)
+		ifEmpty: [ NotFound signal ]
+		ifNotEmpty: [ :entities | 
+			| resolved |
+			self candidates: entities.
+			resolved := self triggerFoundActionWithCurrentEntity: currentEntity.
+			self isLast
+				ifTrue: [ ^ resolved ]
+				ifFalse: [ SRNotSupportedYetFunctionnality signal ] ]
+]
+
+{ #category : #resolution }
+SRInvocationWithNode >> scopeCanContainExpectedKind: aScope [
+	^ self expectedKind isCollection
 		ifTrue: [ self expectedKind
 				anySatisfy:
 					[ :expectedPossibility | aScope canContainsEntitiesOfType: expectedPossibility ] ]
-		ifFalse: [ aScope canContainsEntitiesOfType: self expectedKind ])
-		ifFalse: [ NotFound signal ].
-	^ (aScope
+		ifFalse: [ aScope canContainsEntitiesOfType: self expectedKind ]
+]
+
+{ #category : #resolution }
+SRInvocationWithNode >> scopeContainsEntity: aScope [
+	^ aScope
 		select: [ :anEntity | 
 			(self name: anEntity name isSameAs: self identifier)
-				and: [ self checkKindOfEntity: anEntity ] ])
-		ifEmpty: [ NotFound signal ]
-		ifNotEmpty: [ :entities | 
-			self candidates: entities.
-			self triggerFoundActionWithCurrentEntity: currentEntity.
-			self isLast
-				ifTrue: [ ^ self ]
-				ifFalse: [ SRNotSupportedYetFunctionnality signal ] ]
+				and: [ self checkKindOfEntity: anEntity ] ]
 ]

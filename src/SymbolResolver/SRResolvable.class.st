@@ -198,6 +198,7 @@ SRResolvable >> targetEntity [
 
 { #category : #hooks }
 SRResolvable >> triggerFoundActionWithCurrentEntity: aCurrentEntity [
-	aCurrentEntity isNullPatternObject ifTrue: [ ^ self ].
+	aCurrentEntity isNullPatternObject
+		ifTrue: [ ^ aCurrentEntity ].
 	^ self foundAction cull: self cull: aCurrentEntity
 ]

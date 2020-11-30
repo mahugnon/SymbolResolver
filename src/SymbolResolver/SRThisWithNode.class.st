@@ -41,7 +41,7 @@ SRThisWithNode >> resolveInScope: aSRScope currentEntity: currentEntity [
 	(aSRScope isEntityScope and: [ self validateAsType: aSRScope entity ])
 		ifFalse: [ NotFound signal ]
 		ifTrue: [ self entity: aSRScope entity.
-			self triggerFoundActionWithCurrentEntity: currentEntity ]
+			^ self triggerFoundActionWithCurrentEntity: currentEntity ]
 ]
 
 { #category : #validation }

@@ -50,15 +50,13 @@ SRReferenceToResolve >> replacementForUnresolvedIdentifier [
 { #category : #resolution }
 SRReferenceToResolve >> resolve [
 	"self decomposeIdentifier."
+
 	self scopes
 		do: [ :aScope | 
 			[ ^ self resolve: identifiers inScope: aScope ]
 				on: NotFound
 				do: [ "do nothing to try superior scope" ] ].
-	^self replacementForUnresolvedIdentifier
- 
-
-
+	^ self replacementForUnresolvedIdentifier
 ]
 
 { #category : #accessing }
