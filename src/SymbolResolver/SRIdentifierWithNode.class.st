@@ -37,8 +37,8 @@ SRIdentifierWithNode >> entity: anObject [
 
 { #category : #resolution }
 SRIdentifierWithNode >> resolveInScope: aScope currentEntity: currentEntity [
-	(currentEntity isNullPatternObject) ifTrue: [ ^ self ].
-
+	currentEntity isNullPatternObject
+		ifTrue: [ ^ currentEntity ].
 	self
 		entity:
 			(aScope
@@ -47,5 +47,8 @@ SRIdentifierWithNode >> resolveInScope: aScope currentEntity: currentEntity [
 						and: [ self checkKindOfEntity: anEntity ] ]).
 	self triggerFoundActionWithCurrentEntity: currentEntity.
 	self isLast
-		ifFalse: [ self next resolveInScope: (SREntityScope entity: self entity) currentEntity: currentEntity ]
+		ifFalse: [ ^ self next
+				resolveInScope: (SREntityScope entity: self entity)
+				currentEntity: currentEntity ]
+		ifTrue: [ ^ self entity ]
 ]
