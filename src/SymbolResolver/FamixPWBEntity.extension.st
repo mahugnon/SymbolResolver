@@ -6,3 +6,13 @@ FamixPWBEntity >> asSREntityScope [
 		entity: self ;
 		yourself
 ]
+
+{ #category : #'*SymbolResolver' }
+FamixPWBEntity >> isResolvable [
+	^ false
+]
+
+{ #category : #'*SymbolResolver' }
+FamixPWBEntity >> postResolveActionWith: aSRResolver [
+"By default do nothing"
+]
