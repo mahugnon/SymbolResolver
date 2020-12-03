@@ -53,7 +53,9 @@ SRReferenceToResolve >> resolve [
 
 	self scopes
 		do: [ :aScope | 
-			[ ^ self resolve: identifiers inScope: aScope ]
+			[ | tmp |
+			tmp := self resolve: identifiers inScope: aScope.
+			^ tmp ]
 				on: NotFound
 				do: [ "do nothing to try superior scope" ] ].
 	^ self replacementForUnresolvedIdentifier

@@ -22,7 +22,8 @@ SRFutureReferencesSolver >> resolve: aChainOfIdentifiers [
 		addLast:
 			(SRReferenceToResolve
 				newFromScopes: self scopes
-				identifiers: aChainOfIdentifiers)
+				identifiers: aChainOfIdentifiers).
+	^ aChainOfIdentifiers
 ]
 
 { #category : #accessing }
@@ -33,7 +34,10 @@ SRFutureReferencesSolver >> resolveImmediately: aChainOfIdentifiers [
 { #category : #resolution }
 SRFutureReferencesSolver >> resolveUnresolvedReferences [
 	self toResolve
-		do: [ :each | each resolve postResolveActionWith: each ]
+		do: [ :each | 
+			| resolved |
+			resolved := each resolve.
+			resolved ifNotNil: [ resolved postResolveActionWith: each ] ]
 		displayingProgress: 'References resolution'
 ]
 
