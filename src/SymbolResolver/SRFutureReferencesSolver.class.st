@@ -34,10 +34,7 @@ SRFutureReferencesSolver >> resolveImmediately: aChainOfIdentifiers [
 { #category : #resolution }
 SRFutureReferencesSolver >> resolveUnresolvedReferences [
 	self toResolve
-		do: [ :each | 
-			| resolved |
-			resolved := each resolve.
-			resolved ifNotNil: [ resolved postResolveActionWith: each ] ]
+		do: [ :each | each resolve ]
 		displayingProgress: 'References resolution'
 ]
 

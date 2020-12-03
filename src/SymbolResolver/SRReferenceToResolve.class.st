@@ -37,6 +37,14 @@ SRReferenceToResolve >> identifiers: anObject [
 	identifiers := anObject
 ]
 
+{ #category : #printing }
+SRReferenceToResolve >> printOn: aStream [
+	super printOn: aStream.
+	aStream nextPut: $(.
+	identifiers printOn: aStream.
+	aStream nextPut: $)
+]
+
 { #category : #resolution }
 SRReferenceToResolve >> replacementForUnresolvedIdentifier [
 	identifiers hasReplacementStrategy
