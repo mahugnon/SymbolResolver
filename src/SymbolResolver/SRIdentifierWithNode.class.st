@@ -32,8 +32,7 @@ SRIdentifierWithNode >> entity [
 
 { #category : #accessing }
 SRIdentifierWithNode >> entity: anObject [
-	entity := anObject.
-	owner ifNotNil: [ owner updateWithResolved: entity ]
+	entity := anObject
 ]
 
 { #category : #resolution }

@@ -12,8 +12,7 @@ Class {
 		'foundAction',
 		'notFoundReplacementEntity',
 		'isCaseSensitive',
-		'arrayWithSize',
-		'owner'
+		'arrayWithSize'
 	],
 	#category : #'SymbolResolver-Core'
 }
