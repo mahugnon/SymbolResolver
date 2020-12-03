@@ -12,7 +12,8 @@ Class {
 		'foundAction',
 		'notFoundReplacementEntity',
 		'isCaseSensitive',
-		'arrayWithSize'
+		'arrayWithSize',
+		'owner'
 	],
 	#category : #'SymbolResolver-Core'
 }
@@ -126,6 +127,11 @@ SRResolvable >> isLast [
 	^ self next isNil
 ]
 
+{ #category : #testing }
+SRResolvable >> isResolvable [
+	^ true
+]
+
 { #category : #resolution }
 SRResolvable >> name: aString isSameAs: anotherString [
 	^ self isCaseSensitive
@@ -161,6 +167,16 @@ SRResolvable >> notFoundReplacementEntity [
 { #category : #accessing }
 SRResolvable >> notFoundReplacementEntity: anObject [
 	notFoundReplacementEntity := anObject
+]
+
+{ #category : #accessing }
+SRResolvable >> owner [
+	^ owner
+]
+
+{ #category : #accessing }
+SRResolvable >> owner: anObject [
+	owner := anObject
 ]
 
 { #category : #printing }
