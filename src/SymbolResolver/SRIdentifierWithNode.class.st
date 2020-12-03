@@ -32,7 +32,8 @@ SRIdentifierWithNode >> entity [
 
 { #category : #accessing }
 SRIdentifierWithNode >> entity: anObject [
-	entity := anObject
+	entity := anObject.
+	owner ifNotNil: [ owner updateWithResolved: entity ]
 ]
 
 { #category : #resolution }
@@ -48,7 +49,8 @@ SRIdentifierWithNode >> resolveInScope: aScope currentEntity: currentEntity [
 	self triggerFoundActionWithCurrentEntity: currentEntity.
 	self isLast
 		ifFalse: [ ^ self next
+				foundAction: self foundAction;
 				resolveInScope: (SREntityScope entity: self entity)
-				currentEntity: currentEntity ]
+					currentEntity: currentEntity ]
 		ifTrue: [ ^ self entity ]
 ]
