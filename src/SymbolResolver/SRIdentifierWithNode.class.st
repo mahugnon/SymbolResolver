@@ -5,7 +5,8 @@ Class {
 	#name : #SRIdentifierWithNode,
 	#superclass : #SRResolvable,
 	#instVars : [
-		'entity'
+		'entity',
+		'access'
 	],
 	#category : #'SymbolResolver-Core'
 }
@@ -16,6 +17,16 @@ SRIdentifierWithNode class >> identifier: anIdentifier expectedKind: aKind node:
 		expectedKind: aKind;
 		arrayWithSize: aString;
 		yourself
+]
+
+{ #category : #accessing }
+SRIdentifierWithNode >> access [
+	^ access
+]
+
+{ #category : #accessing }
+SRIdentifierWithNode >> access: anObject [
+	access := anObject
 ]
 
 { #category : #hooks }
@@ -35,6 +46,11 @@ SRIdentifierWithNode >> entity: anObject [
 	entity := anObject
 ]
 
+{ #category : #access }
+SRIdentifierWithNode >> foundActionFromPreviousInChain: aSRIdentifierWithNode [
+	foundAction := aSRIdentifierWithNode foundAction
+]
+
 { #category : #resolution }
 SRIdentifierWithNode >> resolveInScope: aScope currentEntity: currentEntity [
 	currentEntity isNullPatternObject
@@ -45,11 +61,11 @@ SRIdentifierWithNode >> resolveInScope: aScope currentEntity: currentEntity [
 				detect: [ :anEntity | 
 					(self name: anEntity name isSameAs: self identifier)
 						and: [ self checkKindOfEntity: anEntity ] ]).
-	self triggerFoundActionWithCurrentEntity: currentEntity.
 	self isLast
 		ifFalse: [ ^ self next
-				foundAction: self foundAction;
+				foundActionFromPreviousInChain: self;
 				resolveInScope: (SREntityScope entity: self entity)
 					currentEntity: currentEntity ]
-		ifTrue: [ ^ self entity ]
+		ifTrue: [ self triggerFoundActionWithCurrentEntity: currentEntity.
+			^ self entity ]
 ]

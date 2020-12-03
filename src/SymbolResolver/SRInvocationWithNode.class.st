@@ -53,6 +53,13 @@ SRInvocationWithNode >> entity [
 		ifFalse: [ NotFound signal ]
 ]
 
+{ #category : #access }
+SRInvocationWithNode >> foundActionFromPreviousInChain: aSRIdentifierWithNode [
+	"do nothing"
+
+	
+]
+
 { #category : #resolution }
 SRInvocationWithNode >> resolveInScope: aScope currentEntity: currentEntity [
 	currentEntity isNullPatternObject
