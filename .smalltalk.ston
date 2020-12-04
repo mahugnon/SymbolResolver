@@ -4,5 +4,10 @@ SmalltalkCISpec {
       #baseline : 'SymbolResolver',
       #directory : 'src'
     }
-  ]
+  ],
+  #testing : {
+    #coverage : {
+      #packages : [ 'SymbolResolver*' ]
+    }
+  }
 }
