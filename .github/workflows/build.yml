@@ -1,4 +1,4 @@
-name: PowerBuilderParser health   
+name: Github Actions build   
 
 on: [push, pull_request]
 
