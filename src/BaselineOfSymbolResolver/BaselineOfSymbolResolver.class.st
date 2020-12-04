@@ -20,5 +20,5 @@ BaselineOfSymbolResolver >> baseline: spec [
 BaselineOfSymbolResolver >> baselineOfFamix: spec [
 	spec
     	baseline: 'Famix'
-    	with: [ spec repository: 'github://moosetechnology/Famix:development/src' ]
+    	with: [ spec repository: 'github://moosetechnology/Famix:v1.0.0/src' ]
 ]
