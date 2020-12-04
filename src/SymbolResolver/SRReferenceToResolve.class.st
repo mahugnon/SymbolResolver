@@ -37,17 +37,36 @@ SRReferenceToResolve >> identifiers: anObject [
 	identifiers := anObject
 ]
 
+{ #category : #printing }
+SRReferenceToResolve >> printOn: aStream [
+	super printOn: aStream.
+	aStream nextPut: $(.
+	identifiers printOn: aStream.
+	aStream nextPut: $)
+]
+
+{ #category : #resolution }
+SRReferenceToResolve >> replacementForUnresolvedIdentifier [
+	identifiers hasReplacementStrategy
+		ifTrue: [ identifiers
+				applyReplacementStrategyWithCurrentEntity: self currentEntity.
+			^ identifiers
+				triggerFoundActionWithCurrentEntity: self currentEntity ]
+		ifFalse: [ SRReferencesNotFound signalIdentifiers: identifiers ]
+]
+
 { #category : #resolution }
 SRReferenceToResolve >> resolve [
+	"self decomposeIdentifier."
+
 	self scopes
 		do: [ :aScope | 
-			[ ^ self resolve: self identifiers inScope: aScope ]
+			[ | tmp |
+			tmp := self resolve: identifiers inScope: aScope.
+			^ tmp ]
 				on: NotFound
 				do: [ "do nothing to try superior scope" ] ].
-	identifiers hasReplacementStrategy
-		ifTrue: [ identifiers applyReplacementStrategyWithCurrentEntity: self currentEntity.
-			^ identifiers triggerFoundActionWithCurrentEntity: self currentEntity ]
-		ifFalse: [ SRReferencesNotFound signalIdentifiers: identifiers ]
+	^ self replacementForUnresolvedIdentifier
 ]
 
 { #category : #accessing }

@@ -90,6 +90,11 @@ SRResolvable >> foundAction: anObject [
 	foundAction := anObject
 ]
 
+{ #category : #access }
+SRResolvable >> foundActionFromPreviousInChain: aSRIdentifierWithNode [
+	self subclassResponsibility
+]
+
 { #category : #testing }
 SRResolvable >> hasReplacementStrategy [
 	^ self notFoundReplacementEntity notNil
@@ -124,6 +129,11 @@ SRResolvable >> isCaseSensitive: aBoolean [
 { #category : #testing }
 SRResolvable >> isLast [
 	^ self next isNil
+]
+
+{ #category : #testing }
+SRResolvable >> isResolvable [
+	^ true
 ]
 
 { #category : #resolution }
@@ -163,6 +173,16 @@ SRResolvable >> notFoundReplacementEntity: anObject [
 	notFoundReplacementEntity := anObject
 ]
 
+{ #category : #accessing }
+SRResolvable >> owner [
+	^ owner
+]
+
+{ #category : #accessing }
+SRResolvable >> owner: anObject [
+	owner := anObject
+]
+
 { #category : #printing }
 SRResolvable >> printIdentifierPath: aStream [
 	aStream nextPutAll: self identifier.
@@ -198,6 +218,7 @@ SRResolvable >> targetEntity [
 
 { #category : #hooks }
 SRResolvable >> triggerFoundActionWithCurrentEntity: aCurrentEntity [
-	aCurrentEntity isNullPatternObject ifTrue: [ ^ self ].
+	aCurrentEntity isNullPatternObject
+		ifTrue: [ ^ aCurrentEntity ].
 	^ self foundAction cull: self cull: aCurrentEntity
 ]

@@ -31,12 +31,18 @@ SRThisWithNode >> entity: anObject [
 	entity := anObject
 ]
 
+{ #category : #printing }
+SRThisWithNode >> printIdentifierPath: aStream [
+	aStream nextPutAll: 'this'
+]
+
 { #category : #resolution }
 SRThisWithNode >> resolveInScope: aSRScope currentEntity: currentEntity [
 	(aSRScope isEntityScope and: [ self validateAsType: aSRScope entity ])
 		ifFalse: [ NotFound signal ]
 		ifTrue: [ self entity: aSRScope entity.
-			self triggerFoundActionWithCurrentEntity: currentEntity ]
+			self triggerFoundActionWithCurrentEntity: currentEntity.
+			^ self entity ]
 ]
 
 { #category : #validation }
