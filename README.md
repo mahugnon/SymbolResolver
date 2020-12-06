@@ -12,4 +12,4 @@ Metacello new
 ```
 [![Build Status](https://travis-ci.com/moosetechnology/SymbolResolver.svg?branch=master)](https://travis-ci.com/moosetechnology/SymbolResolver)
 ![Github Actions build](https://github.com/moosetechnology/SymbolResolver/workflows/Github%20Actions%20build/badge.svg)
-![Test Coveralls](https://github.com/moosetechnology/SymbolResolver/workflows/Test%20Coveralls/badge.svg)
+
