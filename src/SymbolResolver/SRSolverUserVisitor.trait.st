@@ -32,16 +32,9 @@ SRSolverUserVisitor >> create: aClass from: anASTNode [
 ]
 
 { #category : #'entities creation' }
-SRSolverUserVisitor >> createAssociation: aClass [
-	^ aClass new
-		mooseModel: self model;
-		yourself
-]
-
-{ #category : #'entities creation' }
-SRSolverUserVisitor >> createAssociation: aClass from: anASTNode [
+SRSolverUserVisitor >> createEntity: aClass withAnchorFrom: anASTNode [
 	| created |
-	created := self createAssociation: aClass.
+	created := self createModelEntity: aClass.
 	created
 		sourceAnchor:
 			(FamixPWBIndexedFileAnchor new
@@ -51,6 +44,13 @@ SRSolverUserVisitor >> createAssociation: aClass from: anASTNode [
 				endPos: anASTNode stopPosition;
 				yourself).
 	^ created
+]
+
+{ #category : #'entities creation' }
+SRSolverUserVisitor >> createModelEntity: aClass [
+	^ aClass new
+		mooseModel: self model;
+		yourself
 ]
 
 { #category : #accessing }

@@ -12,7 +12,7 @@ Class {
 		'foundAction',
 		'notFoundReplacementEntity',
 		'isCaseSensitive',
-		'arrayWithSize'
+		'arrayDefinition'
 	],
 	#category : #'SymbolResolver-Core'
 }
@@ -47,13 +47,13 @@ SRResolvable >> applyReplacementStrategyWithCurrentEntity: aCurrentEntity [
 ]
 
 { #category : #accessing }
-SRResolvable >> arrayWithSize [
-	^ arrayWithSize
+SRResolvable >> arrayDefinition [
+	^ arrayDefinition
 ]
 
 { #category : #accessing }
-SRResolvable >> arrayWithSize: anObject [
-	arrayWithSize := anObject
+SRResolvable >> arrayDefinition: anObject [
+	arrayDefinition := anObject
 ]
 
 { #category : #resolution }

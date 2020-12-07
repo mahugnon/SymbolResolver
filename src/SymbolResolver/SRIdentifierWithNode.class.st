@@ -15,7 +15,7 @@ Class {
 SRIdentifierWithNode class >> identifier: anIdentifier expectedKind: aKind node: aNode arrayWithSize: aString [
 	^ (self identifier: anIdentifier node: aNode)
 		expectedKind: aKind;
-		arrayWithSize: aString;
+		arrayDefinition: aString;
 		yourself
 ]
 
