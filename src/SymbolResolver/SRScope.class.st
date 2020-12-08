@@ -57,6 +57,11 @@ SRScope >> isEntityScope [
 	^ false
 ]
 
+{ #category : #testing }
+SRScope >> isNullPatternObject [
+	^false
+]
+
 { #category : #convenient }
 SRScope >> mooseModel: aMooseModel [ 
 	""

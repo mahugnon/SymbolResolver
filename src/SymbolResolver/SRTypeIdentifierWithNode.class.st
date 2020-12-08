@@ -12,6 +12,11 @@ SRTypeIdentifierWithNode >> addTypedVariable: aFamixPWBEntity [
 	self typedVariables add: aFamixPWBEntity
 ]
 
+{ #category : #converting }
+SRTypeIdentifierWithNode >> asSREntityScope [ 
+	^SRNullScope new
+]
+
 { #category : #accessing }
 SRTypeIdentifierWithNode >> entity: anObject [
 	entity := anObject.
