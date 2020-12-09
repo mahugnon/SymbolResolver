@@ -20,7 +20,7 @@ SRTypeIdentifierWithNode >> asSREntityScope [
 { #category : #accessing }
 SRTypeIdentifierWithNode >> entity: anObject [
 	entity := anObject.
-	typedVariables do: [ :each | each attributeType: entity ]
+	typedVariables do: [ :each | each updateType: entity ]
 ]
 
 { #category : #resolution }
