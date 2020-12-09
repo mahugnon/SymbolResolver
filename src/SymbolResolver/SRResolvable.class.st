@@ -12,7 +12,8 @@ Class {
 		'foundAction',
 		'notFoundReplacementEntity',
 		'isCaseSensitive',
-		'arrayDefinition'
+		'arrayDefinition',
+		'previous'
 	],
 	#category : #'SymbolResolver-Core'
 }
@@ -127,6 +128,11 @@ SRResolvable >> isCaseSensitive: aBoolean [
 ]
 
 { #category : #testing }
+SRResolvable >> isFirst [
+	^ self previous isNil
+]
+
+{ #category : #testing }
 SRResolvable >> isLast [
 	^ self next isNil
 ]
@@ -150,7 +156,8 @@ SRResolvable >> next [
 
 { #category : #accessing }
 SRResolvable >> next: anObject [
-	next := anObject
+	next := anObject.
+	anObject previous: self
 ]
 
 { #category : #accessing }
@@ -174,13 +181,13 @@ SRResolvable >> notFoundReplacementEntity: anObject [
 ]
 
 { #category : #accessing }
-SRResolvable >> owner [
-	^ owner
+SRResolvable >> previous [
+	^ previous
 ]
 
 { #category : #accessing }
-SRResolvable >> owner: anObject [
-	owner := anObject
+SRResolvable >> previous: aSResolvable [
+	previous := aSResolvable
 ]
 
 { #category : #printing }
@@ -207,6 +214,20 @@ SRResolvable >> representationString [
 { #category : #resolution }
 SRResolvable >> resolveInScope: aScope currentEntity: currentEntity [ 
 	^ self subclassResponsibility 
+]
+
+{ #category : #accessing }
+SRResolvable >> startPosition [
+	^ self isFirst
+		ifTrue: [ node startPosition ]
+		ifFalse: [ self previous startPosition ]
+]
+
+{ #category : #accessing }
+SRResolvable >> stopPosition [
+	^ self isLast
+		ifTrue: [ node stopPosition ]
+		ifFalse: [ self next stopPosition ]
 ]
 
 { #category : #accessing }

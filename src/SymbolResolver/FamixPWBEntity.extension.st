@@ -4,8 +4,3 @@ Extension { #name : #FamixPWBEntity }
 FamixPWBEntity >> isResolvable [
 	^ false
 ]
-
-{ #category : #'*SymbolResolver' }
-FamixPWBEntity >> postResolveActionWith: aSRResolver [
-"By default do nothing"
-]
