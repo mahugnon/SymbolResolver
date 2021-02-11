@@ -38,6 +38,13 @@ SRFutureReferencesSolver >> resolveUnresolvedReferences [
 		displayingProgress: 'References resolution'
 ]
 
+{ #category : #resolution }
+SRFutureReferencesSolver >> resolveUnresolvedReferencesWithProgress [
+	self toResolve
+		do: [ :each | each resolve ]
+		displayingProgress: 'References resolution'
+]
+
 { #category : #accessing }
 SRFutureReferencesSolver >> toResolve [
 	^ toResolve
